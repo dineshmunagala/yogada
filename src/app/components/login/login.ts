@@ -11,8 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   selectedRole: 'Admin' | 'User' = 'Admin';
-  email: string = '';
-  password: string = '';
+  // Removed email and password fields
   rememberMe: boolean = false;
 
   constructor(private router: Router) { }
@@ -22,9 +21,8 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    // For demo purposes, accept any credentials
-    if (this.email && this.password) {
-      // In production, you would validate against a backend
+    // Allow login only if checkbox is checked
+    if (this.rememberMe) {
       if (this.selectedRole === 'Admin') {
         this.router.navigate(['/admin/dashboard']);
       } else {
